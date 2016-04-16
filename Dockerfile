@@ -13,7 +13,7 @@ RUN cd /tmp \
 	&& unzip mFi.unix.zip \
 	&& mv /tmp/mFi /usr/lib/mfi
 
-EXPOSE 8080 8081 8443 8843 8880
+EXPOSE 6080 6443
 
 VOLUME /usr/lib/mfi/data
 
