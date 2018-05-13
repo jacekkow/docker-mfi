@@ -1,12 +1,13 @@
-FROM debian
-MAINTAINER Jacek Kowalski <Jacek@jacekk.info>
+FROM openjdk:7-jre-slim
 
 ENV MFI_VERSION 2.1.11
 
 RUN apt-get update \
 	&& apt-get -y dist-upgrade \
-	&& apt-get -y install wget jsvc openjdk-7-jre-headless mongodb-server binutils unzip \
-	&& apt-get -y clean
+	&& apt-get -y install --no-install-recommends \
+		wget jsvc mongodb-server binutils unzip \
+	&& apt-get -y clean \
+	&& rm -Rf /var/lib/apt/lists/*
 
 RUN cd /tmp \
 	&& wget "http://dl.ubnt.com/mfi/${MFI_VERSION}/mFi.unix.zip" \
